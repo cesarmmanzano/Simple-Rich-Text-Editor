@@ -4,50 +4,52 @@
         <title>Rich Text Editor</title>
         <link rel="icon" href="icon.png">
         <script src="https://kit.fontawesome.com/44c337bd4b.js" crossorigin="anonymous"></script>
-        <!--<link rel="stylesheet" href="style.css">-->
+        <link rel="stylesheet" href="style.css">
     </head>
     
     <body onload="editText();">
-        <div>
-            <select onchange="execCmdWithArg('fontName',this.value);">
-                <option value="Arial">Arial</option>
-                <option value="Calibri">Calibri</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Garamond">Garamond</option>
-            </select>
+        <div id = "textEditor">
+            <div id = "ribbon">
+                <select onchange="execCmdWithArg('fontName',this.value);">
+                    <option value="Arial">Arial</option>
+                    <option value="Calibri">Calibri</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Garamond">Garamond</option>
+                </select>
 
-            <select onchange="execCmdWithArg('fontSize',this.value);">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+                 <select onchange="execCmdWithArg('fontSize',this.value);">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
-            <button onclick="execCmd('bold')"> <i class = "fa fa-bold"></i> </button>
-            <button onclick="execCmd('italic')"> <i class = "fa fa-italic"></i> </button>
-            <button onclick="execCmd('underline')"> <i class = "fa fa-underline"></i> </button>
-            
-            <input type="color" onchange="execCmdWithArg('foreColor', this.value);"> 
-            
-            <button onclick="execCmd('insertUnorderedList')"> <i class = "fa fa-list-ul"></i> </button>
-            <button onclick="execCmd('insertOrderedList')"> <i class = "fa fa-list-ol"></i> </button>
+                <button onclick="execCmd('bold')"> <i class = "fa fa-bold"></i> </button>
+                <button onclick="execCmd('italic')"> <i class = "fa fa-italic"></i> </button>
+                <button onclick="execCmd('underline')"> <i class = "fa fa-underline"></i> </button>
+                
+                <input type="color" onchange="execCmdWithArg('foreColor', this.value);"> 
+                
+                <button onclick="execCmd('insertUnorderedList')"> <i class = "fa fa-list-ul"></i> </button>
+                <button onclick="execCmd('insertOrderedList')"> <i class = "fa fa-list-ol"></i> </button>
 
-            <button onclick="execCmd('justifyLeft')"> <i class = "fa fa-align-left"></i> </button>
-            <button onclick="execCmd('justifyCenter')"> <i class = "fa fa-align-center"></i> </button>
-            <button onclick="execCmd('justifyRight')"> <i class = "fa fa-align-right"></i> </button>
-            <button onclick="execCmd('justifyFull')"> <i class = "fa fa-align-justify"></i> </button>
-            
-            <button onclick="execCmd('undo')"> <i class = "fa fa-undo"></i> </button>
-            <button onclick="execCmd('redo')"> <i class = "fa fa-repeat"></i> </button>
-            
-            <button onclick="execCmd('indent')"> <i class = "fa fa-indent"></i> </button>
-            <button onclick="execCmd('outdent')"> <i class = "fa fa-dedent"></i> </button>
-            
+                <button onclick="execCmd('justifyLeft')"> <i class = "fa fa-align-left"></i> </button>
+                <button onclick="execCmd('justifyCenter')"> <i class = "fa fa-align-center"></i> </button>
+                <button onclick="execCmd('justifyRight')"> <i class = "fa fa-align-right"></i> </button>
+                <button onclick="execCmd('justifyFull')"> <i class = "fa fa-align-justify"></i> </button>
+                
+                <button onclick="execCmd('undo')"> <i class = "fa fa-undo"></i> </button>
+                <button onclick="execCmd('redo')"> <i class = "fa fa-repeat"></i> </button>
+                
+                <button onclick="execCmd('indent')"> <i class = "fa fa-indent"></i> </button>
+                <button onclick="execCmd('outdent')"> <i class = "fa fa-dedent"></i> </button>       
+            </div>
+
+            <div id = "richTextArea">
+                <iframe id = "wysiwyg" name = "textArea"></iframe>  
+            </div>
         </div>
-
-        <br>
-        <iframe name = "textArea" style = "width: 900px; height: 500px;"></iframe>
 
         <!--Script-->
         <script type = "text/javascript">
